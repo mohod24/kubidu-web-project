@@ -1,0 +1,577 @@
+/* =========================================== */
+/* GAYA DASAR & BERSAMA (MOBILE-FIRST)         */
+/* =========================================== */
+body,
+html {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================== */
+/* HEADER & NAVIGASI                           */
+/* =========================================== */
+header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  height: 80px; /* <-- TAMBAHKAN INI: Kunci utamanya */
+  box-sizing: border-box; /* Mencegah padding menambah ukuran tinggi */
+}
+
+/* GAYA UNTUK GAMBAR LOGO ITU SENDIRI (TAG IMG) */
+.header-main .logo img {
+  /* Atur tinggi logo lebih kecil dari tinggi header */
+  height: 100%; /* Membuat tinggi logo mengisi header */
+  max-height: 80px; /* Batas atas agar tidak terlalu besar */
+  width: auto;
+  object-fit: contain; /* Sangat penting agar logo tidak gepeng */
+  display: block;
+}
+
+.kubidu {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+/* Ornamen / Top Bar */
+.top-ornament,
+.top-bar {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #555;
+  background-color: #e9ecef;
+}
+
+/* Navigasi Utama */
+nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-button {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  text-align: center;
+  flex-grow: 1;
+  margin: 0 5px;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.2s;
+}
+
+.nav-button.active,
+.nav-button:hover {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* =========================================== */
+/* KONTEN UTAMA & SECTION                      */
+/* =========================================== */
+main {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.section-title,
+.section-heading {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* --- Halaman Dashboard --- */
+.main-content {
+  display: flex;
+  flex-grow: 1;
+  padding: 0;
+}
+.side-frame {
+  display: none;
+}
+.center-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+.center-area .tagline {
+  font-size: 2.5em;
+  font-weight: 800;
+  margin: 0;
+}
+.center-area .short-description {
+  font-size: 1.1em;
+  margin-top: 15px;
+  max-width: 500px;
+  color: #495057;
+}
+.explore-button {
+  margin-top: 30px;
+  padding: 12px 25px;
+  font-size: 1em;
+  cursor: pointer;
+  border: 2px solid #343a40;
+  background-color: white;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  color: #343a40;
+}
+.explore-button:hover {
+  background-color: #343a40;
+  color: white;
+}
+
+/* --- Halaman Home --- */
+.carousel-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  color: #888;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* <--- KODE BARU (4 Kolom) */
+  gap: 15px;
+}
+.feature-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 1.2em;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Halaman Cerita --- */
+.cerita-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+.cerita-item {
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  gap: 15px;
+}
+.cerita-cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  min-width: 150px;
+  background: #e9ecef;
+  color: #6c757d;
+  border-radius: 4px;
+}
+.cerita-info h3 {
+  margin: 0 0 5px 0;
+}
+
+/* --- Halaman Video --- */
+.video-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.video-item {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+.video-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  background: #e9ecef;
+  color: #6c757d;
+}
+.video-info {
+  padding: 15px;
+  text-align: center;
+}
+
+/* --- Halaman Games --- */
+.games-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.ppt-placeholder {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #333;
+  color: white;
+  font-size: 2em;
+  border-radius: 8px;
+}
+.game-buttons {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  justify-content: center;
+}
+.game-button {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+}
+
+body,
+html {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header & Navigasi */
+header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+}
+.kubidu {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #ddd;
+}
+.nav-button {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  text-align: center;
+  flex-grow: 1;
+  margin: 0 5px;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.2s;
+}
+.nav-button.active,
+.nav-button:hover {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+main {
+  flex-grow: 1;
+}
+
+/* Struktur Section */
+.page-section {
+  padding: 30px 20px;
+  border-bottom: 1px solid #ddd;
+}
+.page-section:nth-child(odd) {
+  background-color: #fff;
+}
+.section-heading {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.sub-heading {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+/* Grid & Card Universal */
+.grid {
+  display: grid;
+  gap: 15px;
+}
+.grid-2-cols {
+  grid-template-columns: 1fr;
+}
+.grid-3-cols {
+  grid-template-columns: 1fr;
+}
+.card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.placeholder-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  color: #888;
+  text-align: center;
+}
+
+/* Tombol & Input */
+.btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  font-size: 1em;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+}
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+/* Checkbox Styling */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.checkbox-item input {
+  width: 20px;
+  height: 20px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #343a40;
+  color: white;
+}
+
+/* =========================================== */
+/* PENYESUAIAN RESPONSIVE (TABLET & DESKTOP)   */
+/* =========================================== */
+@media (min-width: 768px) {
+  .page-section {
+    padding: 50px 40px;
+  }
+  .section-heading {
+    font-size: 2.5em;
+  }
+  nav {
+    justify-content: center;
+    gap: 20px;
+  }
+  .nav-button {
+    flex-grow: 0;
+    padding: 12px 30px;
+  }
+  .grid-2-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-3-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================================== */
+/* FOOTER                                      */
+/* =========================================== */
+footer {
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid #dee2e6;
+  font-size: 0.9em;
+  color: #6c757d;
+  background-color: #f8f9fa;
+}
+/* Warna footer berbeda di beberapa halaman */
+.page-section + footer,
+.cerita-list + footer,
+.video-grid + footer,
+.games-section + footer {
+  background-color: #343a40;
+  color: white;
+}
+
+/* =========================================== */
+/* PENYESUAIAN RESPONSIVE (TABLET & DESKTOP)   */
+/* =========================================== */
+@media (min-width: 768px) {
+  .header-main,
+  main,
+  nav {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  nav {
+    justify-content: center;
+    gap: 20px;
+  }
+  .nav-button {
+    flex-grow: 0;
+    padding: 12px 30px;
+  }
+  .section-heading,
+  .section-title {
+    font-size: 2.5em;
+  }
+  main.main-content {
+    padding: 0;
+  }
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cerita-item {
+    flex-direction: row;
+    align-items: center;
+  }
+  .video-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
+    margin: auto;
+  }
+  .game-buttons {
+    width: auto;
+  }
+  .page-section {
+    padding: 50px 40px;
+  }
+  .grid-2-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-3-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Penyesuaian untuk layar sangat lebar (Desktop) */
+@media (min-width: 1024px) {
+  .header-main {
+    padding: 20px 40px;
+  }
+  .side-frame {
+    display: flex;
+    flex: 0 0 180px;
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    justify-content: center;
+    padding-top: 20px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-align: center;
+    font-size: 1em;
+    color: #adb5bd;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .center-area {
+    padding: 40px;
+  }
+  .center-area .tagline {
+    font-size: 4.5em;
+  }
+  .center-area .short-description {
+    font-size: 1.5em;
+  }
+  .explore-button {
+    margin-top: 40px;
+    padding: 15px 35px;
+    font-size: 1.2em;
+  }
+}
