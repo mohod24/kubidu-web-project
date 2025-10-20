@@ -161,23 +161,87 @@ main {
 }
 
 /* --- Halaman Home --- */
-.carousel-placeholder {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
-  border: 2px dashed #ccc;
-  border-radius: 12px;
-  background-color: #fff;
-  margin-bottom: 20px;
-  font-size: 1.5em;
-  color: #888;
-}
 .features-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* <--- KODE BARU (4 Kolom) */
   gap: 15px;
 }
+/* ==== CAROUSEL STYLES START ==== */
+.pic-ctn {
+  width: 100%;
+  height: 300px; /* Tinggi area carousel */
+  margin-top: 1rem;
+  margin-bottom: 2rem; /* Jarak ke elemen di bawahnya */
+
+  /* Menggunakan Flexbox untuk memusatkan card */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style untuk Card */
+.carousel-card {
+  background-color: #ffffff;
+  width: 90%; /* Lebar card, responsif */
+  max-width: 650px; /* Lebar maksimum card */
+  padding: 8px; /* Padding di dalam card */
+  border-radius: 12px; /* Sudut melengkung */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+  overflow: hidden; /* Memastikan gambar tidak keluar dari sudut melengkung */
+
+  /* Properti untuk animasi */
+  position: absolute;
+  opacity: 0;
+  animation: display 10s infinite;
+}
+
+/* Style untuk gambar di dalam card */
+.carousel-card img {
+  width: 100%; /* Gambar mengisi lebar card */
+  height: auto;
+  display: block;
+  border-radius: 8px; /* Sudut gambar juga sedikit melengkung */
+}
+
+/* Keyframes Animasi (Tidak ada perubahan) */
+@keyframes display {
+  0% {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  10% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+}
+
+/* Menerapkan delay animasi ke setiap card */
+.carousel-card:nth-child(2) {
+  animation-delay: 2s;
+}
+.carousel-card:nth-child(3) {
+  animation-delay: 4s;
+}
+.carousel-card:nth-child(4) {
+  animation-delay: 6s;
+}
+.carousel-card:nth-child(5) {
+  animation-delay: 8s;
+}
+/* ==== CAROUSEL STYLES END ==== */
+
 .feature-box {
   display: flex;
   justify-content: center;
@@ -192,6 +256,49 @@ main {
 }
 
 /* --- Halaman Cerita --- */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px; /* Padding disesuaikan */
+  border-bottom: 1px solid #e9ecef;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.brand-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.nav-button {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  padding: 8px 24px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #f8f9fa;
+  border-color: #ccc;
+}
+
+.nav-button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
 .cerita-list {
   display: flex;
   flex-direction: column;
@@ -201,12 +308,19 @@ main {
 }
 .cerita-item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  font-size: small;
   background: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 15px;
-  gap: 15px;
+  gap: 20px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.cerita-item:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 .cerita-cover {
   display: flex;
@@ -217,11 +331,85 @@ main {
   background: #e9ecef;
   color: #6c757d;
   border-radius: 4px;
+  overflow: hidden;
+}
+.cerita-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cerita-info {
+  flex: 1;
 }
 .cerita-info h3 {
   margin: 0 0 5px 0;
+  color: #0056b3;
+}
+.cerita-info p {
+  margin: 0;
+  line-height: 1.5;
 }
 
+/* CSS Modal tidak diubah */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.close-button {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close-button:hover,
+.close-button:focus {
+  color: #333;
+}
+.modal-body video {
+  width: 100%;
+  max-height: 500px;
+  border-radius: 8px;
+}
+.modal-body h2 {
+  margin-top: 0;
+}
+.modal-body p {
+  line-height: 1.6;
+  text-align: justify;
+}
 /* --- Halaman Video --- */
 .video-grid {
   display: flex;
