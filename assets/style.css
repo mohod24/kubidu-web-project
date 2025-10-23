@@ -38,17 +38,15 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 8px 20px;
-  height: 80px; /* <-- TAMBAHKAN INI: Kunci utamanya */
-  box-sizing: border-box; /* Mencegah padding menambah ukuran tinggi */
+  height: 80px;
+  box-sizing: border-box;
 }
 
-/* GAYA UNTUK GAMBAR LOGO ITU SENDIRI (TAG IMG) */
 .header-main .logo img {
-  /* Atur tinggi logo lebih kecil dari tinggi header */
-  height: 100%; /* Membuat tinggi logo mengisi header */
-  max-height: 80px; /* Batas atas agar tidak terlalu besar */
+  height: 100%;
+  max-height: 80px;
   width: auto;
-  object-fit: contain; /* Sangat penting agar logo tidak gepeng */
+  object-fit: contain;
   display: block;
 }
 
@@ -57,7 +55,6 @@ header {
   font-weight: 500;
 }
 
-/* Ornamen / Top Bar */
 .top-ornament,
 .top-bar {
   text-align: center;
@@ -67,7 +64,6 @@ header {
   background-color: #e9ecef;
 }
 
-/* Navigasi Utama */
 nav {
   display: flex;
   justify-content: space-around;
@@ -163,47 +159,37 @@ main {
 /* --- Halaman Home --- */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* <--- KODE BARU (4 Kolom) */
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
 }
 /* ==== CAROUSEL STYLES START ==== */
 .pic-ctn {
   width: 100%;
-  height: 300px; /* Tinggi area carousel */
+  height: 300px;
   margin-top: 1rem;
-  margin-bottom: 2rem; /* Jarak ke elemen di bawahnya */
-
-  /* Menggunakan Flexbox untuk memusatkan card */
+  margin-bottom: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-/* Style untuk Card */
 .carousel-card {
   background-color: #ffffff;
-  width: 90%; /* Lebar card, responsif */
-  max-width: 650px; /* Lebar maksimum card */
-  padding: 8px; /* Padding di dalam card */
-  border-radius: 12px; /* Sudut melengkung */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Efek bayangan */
-  overflow: hidden; /* Memastikan gambar tidak keluar dari sudut melengkung */
-
-  /* Properti untuk animasi */
+  width: 90%;
+  max-width: 650px;
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   position: absolute;
   opacity: 0;
   animation: display 10s infinite;
 }
-
-/* Style untuk gambar di dalam card */
 .carousel-card img {
-  width: 100%; /* Gambar mengisi lebar card */
+  width: 100%;
   height: auto;
   display: block;
-  border-radius: 8px; /* Sudut gambar juga sedikit melengkung */
+  border-radius: 8px;
 }
-
-/* Keyframes Animasi (Tidak ada perubahan) */
 @keyframes display {
   0% {
     transform: translateX(30px);
@@ -226,8 +212,6 @@ main {
     opacity: 0;
   }
 }
-
-/* Menerapkan delay animasi ke setiap card */
 .carousel-card:nth-child(2) {
   animation-delay: 2s;
 }
@@ -260,44 +244,20 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 40px; /* Padding disesuaikan */
+  padding: 10px 40px;
   border-bottom: 1px solid #e9ecef;
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .brand-name {
   font-size: 24px;
   font-weight: bold;
   color: #333;
 }
-
 .main-nav {
   display: flex;
   justify-content: center;
   padding: 10px 0;
-}
-
-.nav-button {
-  text-decoration: none;
-  color: #555;
-  font-weight: 500;
-  padding: 8px 24px;
-  margin: 0 5px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.nav-button:hover {
-  background-color: #f8f9fa;
-  border-color: #ccc;
-}
-
-.nav-button.active {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
 }
 .cerita-list {
   display: flex;
@@ -350,7 +310,7 @@ main {
   line-height: 1.5;
 }
 
-/* CSS Modal tidak diubah */
+/* --- Modal --- */
 .modal {
   display: none;
   position: fixed;
@@ -398,10 +358,19 @@ main {
 .close-button:focus {
   color: #333;
 }
-.modal-body video {
+.modal-body .video-iframe {
   width: 100%;
-  max-height: 500px;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: none;
   border-radius: 8px;
+  background-color: #000;
+}
+@supports not (aspect-ratio: 16 / 9) {
+  .modal-body .video-iframe {
+    height: 450px;
+    max-height: 500px;
+  }
 }
 .modal-body h2 {
   margin-top: 0;
@@ -410,30 +379,98 @@ main {
   line-height: 1.6;
   text-align: justify;
 }
+
 /* --- Halaman Video --- */
 .video-grid {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
+/* === KODE YANG DIPERBARUI UNTUK UI VIDEO === */
 .video-item {
   background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid #e0e0e0; /* Batas lebih halus */
+  border-radius: 12px; /* Sudut lebih bulat */
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); /* Bayangan lebih lembut */
+  /* Transisi untuk efek hover */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.video-placeholder {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 150px;
-  background: #e9ecef;
-  color: #6c757d;
+
+/* Efek 'lift' saat di-hover */
+.video-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
+
+.video-player {
+  width: 100%;
+  height: auto;
+  display: block;
+  background-color: #000;
+
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
 .video-info {
-  padding: 15px;
-  text-align: center;
+  padding: 20px; /* Padding lebih besar */
+  text-align: left; /* Rata kiri agar lebih rapi */
+}
+
+/* Menata Judul di dalam kartu */
+.video-info h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.25em;
+  color: #222;
+}
+
+/* Menata paragraf deskripsi di dalam kartu */
+.video-info p {
+  margin: 0;
+  font-size: 0.95em;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* === TAMBAHAN UNTUK MEMPERBAIKI LAYOUT VIDEO.HTML === */
+
+/* 1. Mengembalikan layout kartu video menjadi vertikal
+     (menimpa 'display: flex' dari .cerita-item)
+*/
+.video-grid .video-item {
+  display: block; /* Mengubah dari flex (menyamping) jadi block (ke bawah) */
+  padding: 0; /* Menghapus padding aneh dari .cerita-item */
+  background-color: #fff; /* Memastikan background kartu tetap putih */
+}
+
+/* 2. Membuat gambar thumbnail mengisi 100% lebar kartu
+     (menimpa 'height: 150px' & 'min-width: 150px' dari .cerita-cover)
+*/
+.video-grid .cerita-cover {
+  width: 100%; /* Gambar mengisi penuh lebar kartu */
+  height: auto; /* Tinggi gambar diatur otomatis */
+  min-width: 0; /* Menghapus batasan lebar minimum */
+  aspect-ratio: 16 / 9; /* Memaksa rasio 16:9 (seperti video) */
+  background-color: #000; /* Latar belakang hitam jika thumbnail gagal dimuat */
+  border-radius: 12px 12px 0 0; /* Hanya sudut atas yg melengkung */
+}
+
+/* 3. Memastikan gambar di dalam thumbnail pas
+*/
+.video-grid .cerita-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Memastikan gambar menutupi area tanpa gepeng */
+}
+
+/* 4. Mengembalikan padding untuk area teks
+     (karena kita hapus di langkah 1)
+*/
+.video-grid .video-info {
+  padding: 20px;
 }
 
 /* --- Halaman Games --- */
@@ -470,72 +507,7 @@ main {
   cursor: pointer;
 }
 
-body,
-html {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background-color: #f4f4f9;
-  color: #333;
-}
-.container {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Header & Navigasi */
-header {
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid #ddd;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-.header-main {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 20px;
-}
-.kubidu {
-  font-size: 1.2em;
-  font-weight: 500;
-}
-nav {
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #ddd;
-}
-.nav-button {
-  padding: 10px 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: white;
-  cursor: pointer;
-  text-align: center;
-  flex-grow: 1;
-  margin: 0 5px;
-  text-decoration: none;
-  color: #333;
-  transition: all 0.2s;
-}
-.nav-button.active,
-.nav-button:hover {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
-}
-
-main {
-  flex-grow: 1;
-}
-
-/* Struktur Section */
+/* --- Halaman Pembelajaran (Template) --- */
 .page-section {
   padding: 30px 20px;
   border-bottom: 1px solid #ddd;
@@ -543,20 +515,12 @@ main {
 .page-section:nth-child(odd) {
   background-color: #fff;
 }
-.section-heading {
-  font-size: 1.8em;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: center;
-}
 .sub-heading {
   font-size: 1.2em;
   font-weight: 600;
   margin-top: 25px;
   margin-bottom: 15px;
 }
-
-/* Grid & Card Universal */
 .grid {
   display: grid;
   gap: 15px;
@@ -585,8 +549,6 @@ main {
   color: #888;
   text-align: center;
 }
-
-/* Tombol & Input */
 .btn {
   padding: 12px 20px;
   border-radius: 8px;
@@ -606,8 +568,6 @@ main {
   box-sizing: border-box;
   margin-top: 10px;
 }
-
-/* Checkbox Styling */
 .checkbox-group {
   display: flex;
   flex-direction: column;
@@ -621,40 +581,6 @@ main {
 .checkbox-item input {
   width: 20px;
   height: 20px;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #343a40;
-  color: white;
-}
-
-/* =========================================== */
-/* PENYESUAIAN RESPONSIVE (TABLET & DESKTOP)   */
-/* =========================================== */
-@media (min-width: 768px) {
-  .page-section {
-    padding: 50px 40px;
-  }
-  .section-heading {
-    font-size: 2.5em;
-  }
-  nav {
-    justify-content: center;
-    gap: 20px;
-  }
-  .nav-button {
-    flex-grow: 0;
-    padding: 12px 30px;
-  }
-  .grid-2-cols {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .grid-3-cols {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 /* =========================================== */
@@ -709,11 +635,17 @@ footer {
     flex-direction: row;
     align-items: center;
   }
+
+  /* === PERBARUI .video-grid untuk desktop === */
   .video-grid {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     max-width: 1200px;
     margin: auto;
+    gap: 30px; /* Jarak antar kartu video */
   }
+  /* === AKHIR PERBARUAN === */
+
   .game-buttons {
     width: auto;
   }
@@ -761,5 +693,32 @@ footer {
     margin-top: 40px;
     padding: 15px 35px;
     font-size: 1.2em;
+  }
+
+  /* --- Penyesuaian Halaman Games --- */
+
+  /* Gaya untuk <iframe> PPT.
+  Ini meniru gaya .ppt-placeholder Anda sebelumnya.
+*/
+  .ppt-embed {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border: none; /* Menghilangkan batas default iframe */
+    border-radius: 8px;
+    background: #eee; /* Latar belakang jika PPT lama dimuat */
+  }
+
+  /* Memperbaiki tampilan .game-button setelah diubah menjadi <a>.
+  Ini menghilangkan garis bawah dan mengatur warna teks.
+*/
+  .game-button {
+    text-decoration: none; /* Menghilangkan garis bawah link */
+    color: #333; /* Mengatur warna teks (sesuaikan jika perlu) */
+  }
+
+  /* (Opsional) Efek hover untuk tombol link */
+  .game-button:hover {
+    background-color: #f0f0f0;
   }
 }
