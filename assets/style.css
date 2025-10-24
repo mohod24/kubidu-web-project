@@ -1,0 +1,1002 @@
+/* =========================================== */
+/* GAYA DASAR & BERSAMA (MOBILE-FIRST)         */
+/* =========================================== */
+body,
+html {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================== */
+/* HEADER & NAVIGASI                           */
+/* =========================================== */
+header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  height: 80px;
+  box-sizing: border-box;
+}
+
+.header-main .logo {
+  /* Tambahkan display: flex dan align-items untuk menyelaraskan gambar dengan teks KUBIDU */
+  display: flex;
+  align-items: center;
+  height: 100%; /* Memastikan anchor logo mengisi tinggi header-main */
+}
+
+.header-main .logo img {
+  height: 100%;
+  max-height: 60px; /* Sedikit dikecilkan agar ada ruang dengan teks Kubidu */
+  width: auto;
+  object-fit: contain;
+  display: block;
+  /* Margin kanan untuk memisahkan gambar dari teks KUBIDU */
+  margin-right: 10px; 
+}
+
+.kubidu {
+  font-size: 1.5em; /* Ukuran teks diperbesar agar sejajar dengan nav */
+  font-weight: 700; /* Font weight dipertebal */
+  /* Menjaga agar KUBIDU berada di samping logo */
+  margin-right: auto; /* Mendorong nav ke kanan (opsional, tergantung layout) */
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+nav {
+  /* Ubah pengaturan nav agar itemnya berada di kanan */
+  display: flex;
+  justify-content: flex-end; /* Memindahkan nav ke kanan (atau gunakan auto-margin) */
+  align-items: center; /* Menyelesaikan vertikal */
+  padding: 0; /* Hapus padding yang lama */
+  background-color: transparent; /* Hapus background lama */
+  border-top: none; /* Hapus border lama */
+  border-bottom: none; /* Hapus border lama */
+}
+
+.nav-button {
+  padding: 8px 15px; /* Sesuaikan padding agar terlihat lebih baik di header */
+  border: none; /* Hilangkan border */
+  border-radius: 4px; /* Sudut lebih kecil */
+  background-color: transparent; /* Background transparan */
+  cursor: pointer;
+  text-align: center;
+  flex-grow: 0; /* Tidak perlu flex-grow */
+  margin: 0 5px; /* Jarak antar tombol */
+  text-decoration: none;
+  color: #333;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.nav-button.active,
+.nav-button:hover {
+  /* Ubah gaya hover/active untuk header yang baru */
+  background-color: transparent;
+  color: #007bff; /* Warna biru untuk hover/active */
+  border-bottom: 2px solid #007bff; /* Garis bawah sebagai indikator */
+  border-color: transparent;
+}
+
+/* =========================================== */
+/* KONTEN UTAMA & SECTION                      */
+/* =========================================== */
+main {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.section-title,
+.section-heading {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* --- Halaman Dashboard --- */
+.main-content {
+  display: flex;
+  flex-grow: 1;
+  padding: 0;
+}
+.side-frame {
+  display: none;
+}
+.center-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+.center-area .tagline {
+  font-size: 2.5em;
+  font-weight: 800;
+  margin: 0;
+}
+.center-area .short-description {
+  font-size: 1.1em;
+  margin-top: 15px;
+  max-width: 500px;
+  color: #495057;
+}
+.explore-button {
+  margin-top: 30px;
+  padding: 12px 25px;
+  font-size: 1em;
+  cursor: pointer;
+  border: 2px solid #343a40;
+  background-color: white;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  color: #343a40;
+}
+.explore-button:hover {
+  background-color: #343a40;
+  color: white;
+}
+
+/* --- Halaman Home --- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+/* ==== CAROUSEL STYLES START ==== */
+.pic-ctn {
+  width: 100%;
+  height: 300px;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-card {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 650px;
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: absolute;
+  opacity: 0;
+  animation: display 10s infinite;
+}
+.carousel-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+@keyframes display {
+  0% {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  10% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+}
+.carousel-card:nth-child(2) {
+  animation-delay: 2s;
+}
+.carousel-card:nth-child(3) {
+  animation-delay: 4s;
+}
+.carousel-card:nth-child(4) {
+  animation-delay: 6s;
+}
+.carousel-card:nth-child(5) {
+  animation-delay: 8s;
+}
+/* ==== CAROUSEL STYLES END ==== */
+
+.feature-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 1.2em;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Halaman Cerita --- */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  border-bottom: 1px solid #e9ecef;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.brand-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+.main-nav {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+.cerita-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+.cerita-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: small;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  gap: 20px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.cerita-item:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.cerita-cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  min-width: 150px;
+  background: #e9ecef;
+  color: #6c757d;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.cerita-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cerita-info {
+  flex: 1;
+}
+.cerita-info h3 {
+  margin: 0 0 5px 0;
+  color: #0056b3;
+}
+.cerita-info p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --- Modal --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.close-button {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close-button:hover,
+.close-button:focus {
+  color: #333;
+}
+.modal-body .video-iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: none;
+  border-radius: 8px;
+  background-color: #000;
+}
+@supports not (aspect-ratio: 16 / 9) {
+  .modal-body .video-iframe {
+    height: 450px;
+    max-height: 500px;
+  }
+}
+.modal-body h2 {
+  margin-top: 0;
+}
+.modal-body p {
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* --- Halaman Video --- */
+.video-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* === KODE YANG DIPERBARUI UNTUK UI VIDEO === */
+.video-item {
+  background: white;
+  border: 1px solid #e0e0e0; /* Batas lebih halus */
+  border-radius: 12px; /* Sudut lebih bulat */
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); /* Bayangan lebih lembut */
+  /* Transisi untuk efek hover */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efek 'lift' saat di-hover */
+.video-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.video-player {
+  width: 100%;
+  height: auto;
+  display: block;
+  background-color: #000;
+
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.video-info {
+  padding: 20px; /* Padding lebih besar */
+  text-align: left; /* Rata kiri agar lebih rapi */
+}
+
+/* Menata Judul di dalam kartu */
+.video-info h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.25em;
+  color: #222;
+}
+
+/* Menata paragraf deskripsi di dalam kartu */
+.video-info p {
+  margin: 0;
+  font-size: 0.95em;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* === TAMBAHAN UNTUK MEMPERBAIKI LAYOUT VIDEO.HTML === */
+
+/* 1. Mengembalikan layout kartu video menjadi vertikal
+     (menimpa 'display: flex' dari .cerita-item)
+*/
+.video-grid .video-item {
+  display: block; /* Mengubah dari flex (menyamping) jadi block (ke bawah) */
+  padding: 0; /* Menghapus padding aneh dari .cerita-item */
+  background-color: #fff; /* Memastikan background kartu tetap putih */
+}
+
+/* 2. Membuat gambar thumbnail mengisi 100% lebar kartu
+     (menimpa 'height: 150px' & 'min-width: 150px' dari .cerita-cover)
+*/
+.video-grid .cerita-cover {
+  width: 100%; /* Gambar mengisi penuh lebar kartu */
+  height: auto; /* Tinggi gambar diatur otomatis */
+  min-width: 0; /* Menghapus batasan lebar minimum */
+  aspect-ratio: 16 / 9; /* Memaksa rasio 16:9 (seperti video) */
+  background-color: #000; /* Latar belakang hitam jika thumbnail gagal dimuat */
+  border-radius: 12px 12px 0 0; /* Hanya sudut atas yg melengkung */
+}
+
+/* 3. Memastikan gambar di dalam thumbnail pas
+*/
+.video-grid .cerita-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Memastikan gambar menutupi area tanpa gepeng */
+}
+
+/* 4. Mengembalikan padding untuk area teks
+     (karena kita hapus di langkah 1)
+*/
+.video-grid .video-info {
+  padding: 20px;
+}
+
+/* --- Halaman Games --- */
+.games-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.ppt-placeholder {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #333;
+  color: white;
+  font-size: 2em;
+  border-radius: 8px;
+}
+.game-buttons {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  justify-content: center;
+}
+.game-button {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* --- Halaman Pembelajaran (Template) --- */
+.page-section {
+  padding: 30px 20px;
+  border-bottom: 1px solid #ddd;
+}
+.page-section:nth-child(odd) {
+  background-color: #fff;
+}
+.sub-heading {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+.grid {
+  display: grid;
+  gap: 15px;
+}
+.grid-2-cols {
+  grid-template-columns: 1fr;
+}
+.grid-3-cols {
+  grid-template-columns: 1fr;
+}
+.card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.placeholder-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  color: #888;
+  text-align: center;
+}
+.btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  font-size: 1em;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+}
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.checkbox-item input {
+  width: 20px;
+  height: 20px;
+}
+
+/* =========================================== */
+/* FOOTER                                      */
+/* =========================================== */
+footer {
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid #dee2e6;
+  font-size: 0.9em;
+  color: #6c757d;
+  background-color: #f8f9fa;
+}
+/* Warna footer berbeda di beberapa halaman */
+.page-section + footer,
+.cerita-list + footer,
+.video-grid + footer,
+.games-section + footer {
+  background-color: #343a40;
+  color: white;
+}
+
+/* =========================================== */
+/* PENYESUAIAN RESPONSIVE (TABLET & DESKTOP)   */
+/* =========================================== */
+@media (min-width: 768px) {
+  .header-main,
+  main,
+  nav {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  nav {
+    justify-content: center;
+    gap: 20px;
+  }
+  .nav-button {
+    flex-grow: 0;
+    padding: 8px 15px; /* Sesuaikan padding */
+  }
+  .section-heading,
+  .section-title {
+    font-size: 2.5em;
+  }
+  main.main-content {
+    padding: 0;
+  }
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cerita-item {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  /* === PERBARUI .video-grid untuk desktop === */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
+    margin: auto;
+    gap: 30px; /* Jarak antar kartu video */
+  }
+  /* === AKHIR PERBARUAN === */
+
+  .game-buttons {
+    width: auto;
+  }
+  .page-section {
+    padding: 50px 40px;
+  }
+  .grid-2-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-3-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Penyesuaian untuk layar sangat lebar (Desktop) */
+@media (min-width: 1024px) {
+  .header-main {
+    padding: 20px 40px;
+  }
+  .side-frame {
+    display: flex;
+    flex: 0 0 180px;
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    justify-content: center;
+    padding-top: 20px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-align: center;
+    font-size: 1em;
+    color: #adb5bd;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .center-area {
+    padding: 40px;
+  }
+  .center-area .tagline {
+    font-size: 4.5em;
+  }
+  .center-area .short-description {
+    font-size: 1.5em;
+  }
+  .explore-button {
+    margin-top: 40px;
+    padding: 15px 35px;
+    font-size: 1.2em;
+  }
+
+  /* --- Penyesuaian Halaman Games --- */
+
+  /* Gaya untuk <iframe> PPT.
+  Ini meniru gaya .ppt-placeholder Anda sebelumnya.
+*/
+  .ppt-embed {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border: none; /* Menghilangkan batas default iframe */
+    border-radius: 8px;
+    background: #eee; /* Latar belakang jika PPT lama dimuat */
+  }
+
+  /* Memperbaiki tampilan .game-button setelah diubah menjadi <a>.
+  Ini menghilangkan garis bawah dan mengatur warna teks.
+*/
+  .game-button {
+    text-decoration: none; /* Menghilangkan garis bawah link */
+    color: #333; /* Mengatur warna teks (sesuaikan jika perlu) */
+  }
+
+  /* (Opsional) Efek hover untuk tombol link */
+  .game-button:hover {
+    background-color: #f0f0f0;
+  }
+}
+
+/* =========================================== */
+/* STYLING TAMBAHAN UNTUK SIMPLIFIED FORM     */
+/* =========================================== */
+.group-select-container {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff; /* Latar belakang putih */
+    border: 1px solid #dee2e6; /* Border lebih halus */
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Bayangan yang lebih jelas */
+}
+
+.group-info-display {
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #e9f5ff; /* Latar belakang biru muda */
+    border-left: 5px solid #007bff; /* Garis indikator biru */
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+    color: #004085;
+    transition: all 0.3s ease;
+}
+
+.group-info-display.full {
+    background-color: #f8d7da; /* Latar belakang merah muda */
+    border-left-color: #dc3545; /* Garis indikator merah */
+    color: #721c24;
+}
+
+.sub-heading {
+    display: block;
+    margin-bottom: 8px; /* Tambah margin bawah */
+    margin-top: 15px; /* Tambah margin atas */
+    font-weight: 600; /* Lebih tebal sedikit */
+    font-size: 1em;
+}
+
+/* Mengubah gaya .input-field untuk form ini */
+.group-select-container .input-field {
+    width: 100%;
+    padding: 12px 15px; /* Padding lebih besar */
+    box-sizing: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 8px; /* Sudut lebih bulat */
+    font-size: 1em;
+}
+
+/* Mengubah gaya tombol agar lebih menonjol */
+.primary-btn {
+    background-color: #6a5acd; /* Ungu */
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 14px; /* Padding lebih besar */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.primary-btn:hover {
+    background-color: #5345a9;
+}
+
+/* =========================================== */
+/* STYLING TAMBAHAN UNTUK E-MODUL SECTION    */
+/* =========================================== */
+.emodule-container {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.emodule-cover {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    margin: 0 auto;
+    /* Memberikan efek seperti buku/modul */
+    border: 1px solid #ccc;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.emodule-cover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+.emodule-cover img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.read-emodule-btn {
+    display: flex; /* Untuk menempatkan ikon dan teks sejajar */
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #007bff; /* Warna biru cerah */
+    color: white;
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%; /* Memastikan tombol selebar container */
+    max-width: 350px; /* Lebar yang sama dengan cover */
+    box-sizing: border-box;
+}
+
+.read-emodule-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* =========================================== */
+/* STYLING TAMBAHAN UNTUK UJI KEMAMPUAN SECTION*/
+/* =========================================== */
+.quiz-input-group {
+    padding: 10px 0;
+}
+
+.quiz-divider {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 25px 0;
+}
+
+.quiz-question-card {
+    /* Menggunakan kelas .card yang sudah ada */
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.quiz-question-text {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.question-number {
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+/* Memastikan radio button dalam kuis terlihat rapi */
+.quiz-question-card .checkbox-group .checkbox-item {
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+
+.quiz-question-card .checkbox-group .checkbox-item input[type="radio"] {
+    /* Menggunakan properti input yang sudah ada, hanya memastikan ukuran */
+    width: 18px;
+    height: 18px;
+}
+
+/* =========================================== */
+/* STYLING TAMBAHAN UNTUK EKSPLORASI SECTION  */
+/* =========================================== */
+
+/* Menambahkan Grid 4 Kolom */
+.grid-4-cols {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .grid-4-cols {
+        /* Di layar kecil, ubah menjadi 2 kolom */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Styling untuk Drag-and-Drop Matching (Dasar Visual) */
+.matching-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.matching-source-column,
+.matching-target-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.drag-item,
+.drop-target {
+    min-height: 50px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid #ccc;
+    cursor: grab; /* Menandakan elemen dapat ditarik */
+    transition: background-color 0.2s;
+}
+
+.drag-item {
+    background-color: #f7f7f7;
+}
+
+.drop-target {
+    background-color: #fff;
+    border-style: dashed;
+}
+
+/* Ubah gaya textarea */
+textarea.input-field {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1em;
+}
+
+/* Gaya untuk Matching Dropdown */
+.matching-container.dropdown-matching {
+    /* Gaya Grid 2 Kolom untuk kontainer pencocokan */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+    padding: 15px 0;
+}
+
+.match-item {
+    /* Card yang membungkus label/gambar dan dropdown */
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.matching-select {
+    /* Dropdown */
+    width: 100%;
+    padding: 8px;
+}
+
+/* Penyesuaian untuk tampilan mobile (Jika Anda menggunakan media queries) */
+@media (max-width: 600px) {
+    .matching-container.dropdown-matching {
+        grid-template-columns: 1fr; /* Menjadi 1 kolom di layar kecil */
+    }
+}
+

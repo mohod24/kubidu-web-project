@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cerita</title>
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-main">
+        <a href="dashboard.html" class="logo">
+          <img src="img/logo.png" alt="" />
+        </a>
+        <div class="kubidu">KUBIDU</div>
+        <nav>
+          <a href="cerita.html" class="nav-button">Cerita</a>
+          <a href="video.html" class="nav-button">Video</a>
+          <a href="games.html" class="nav-button">Games</a>
+          <a href="pembelajaran.html" class="nav-button active">Pembelajaran</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <h2 class="section-title">Kumpulan Cerita Edukatif</h2>
+      <div class="cerita-list">
+        <div
+          class="cerita-item"
+          data-type="video"
+          data-title="Sawah Di Belakang Rumah Kakek"
+          data-src="https://drive.google.com/file/d/1dNbCzfEY9uymmO_Q8pS87xLm-QZY_ATz/view?usp=drive_link"
+        >
+          <div class="cerita-cover">
+            <img src="img/cerita.jpg" alt="Video Sawah Kakek" />
+          </div>
+          <div class="cerita-info">
+            <h3>Sawah Di Belakang Rumah Kakek</h3>
+            <p>
+              Cerita ini mengisahkan tentang Naya yang menghabiskan liburan
+              sekolah di kampung bersama Kakeknya, di mana ia belajar pelajaran
+              hidup yang berharga tentang kesabaran dan proses dari alam melalui
+              kegiatan sederhana di sawah. Melalui pengalaman menanam padi, Naya
+              memahami bahwa semua hal besar berawal dari hal kecil yang dirawat
+              dengan tulus.
+            </p>
+          </div>
+          <div class="full-content" style="display: none"></div>
+        </div>
+
+        <!-- ==== CERITA TEKS ==== -->
+        <div
+          class="cerita-item"
+          data-type="text"
+          data-title="Langit Setelah Hujan"
+        >
+          <div class="cerita-cover">
+            <img
+              src="https://placehold.co/400x400/17a2b8/FFFFFF?text=Cerita"
+              alt="Langit Setelah Hujan"
+            />
+          </div>
+          <div class="cerita-info">
+            <h3>Langit Setelah Hujan</h3>
+            <p>
+              Kisah ini menceritakan tentang Tiara yang belajar mengubah
+              kekecewaannya terhadap hujan menjadi pemahaman bahwa setiap
+              peristiwa yang tampak menghalangi sebenarnya bisa membawa manfaat.
+            </p>
+          </div>
+          <div class="full-content" style="display: none">
+            <p>Pagi itu hujan turun deras sekali. Langit tampak abu-abu...</p>
+            <p>Tiara duduk di dekat jendela kelas sambil menopang dagu...</p>
+          </div>
+        </div>
+
+        <div
+          class="cerita-item"
+          data-type="text"
+          data-title="Doni Belajar Tepat Waktu"
+        >
+          <div class="cerita-cover">
+            <img
+              src="https://placehold.co/400x400/ffc107/FFFFFF?text=Inspiratif"
+              alt="Doni Belajar Tepat Waktu"
+            />
+          </div>
+          <div class="cerita-info">
+            <h3>Doni Belajar Tepat Waktu</h3>
+            <p>
+              Kisah ini menceritakan tentang Doni yang berhasil mengubah
+              kebiasaan buruknya sering terlambat ke sekolah setelah memahami
+              arti disiplin yang sesungguhnya dari nasihat gurunya.
+            </p>
+          </div>
+          <div class="full-content" style="display: none">
+            <p>Doni adalah anak yang baik, tapi ada satu kebiasaannya...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; kupukupubirujuara@gmail.com</p>
+    </footer>
+    
+    <div id="cerita-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <div class="modal-body" id="modal-body-content"></div>
+      </div>
+    </div>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>
+
