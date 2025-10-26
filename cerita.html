@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cerita</title>
-    <link rel="stylesheet" href="assets/style.css" />
-  </head>
-  <body>
-    <header>
-      <div class="header-main">
-        <a href="dashboard.html" class="logo">
-          <img src="img/logo.png" alt="" />
-        </a>
-        <div class="kubidu">KUBIDU</div>
-        <nav>
-          <a href="cerita.html" class="nav-button active">Cerita</a>
-          <a href="video.html" class="nav-button">Video</a>
-          <a href="games.html" class="nav-button">Games</a>
-          <a href="pembelajaran.html" class="nav-button">Pembelajaran</a>
-        </nav>
-      </div>
-    </header>
 
-    <main>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cerita</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+  <header>
+    <div class="header-main">
+      <a href="dashboard.html" class="logo">
+        <img src="img/KUBIDU.png" alt="" />
+      </a>
+      <nav>
+        <a href="cerita.html" class="nav-button active">Cerita</a>
+        <a href="video.html" class="nav-button">Video</a>
+        <a href="games.html" class="nav-button">Games</a>
+        <a href="pembelajaran.html" class="nav-button">Pembelajaran</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <aside class="side-frame"><img src="img/long_ver.png" alt=""></aside>
+
+    <div class="center-area">
       <h2 class="section-title">Kumpulan Cerita Edukatif</h2>
       <div class="cerita-list">
-        <div
-          class="cerita-item"
-          data-type="video"
-          data-title="Sawah Di Belakang Rumah Kakek"
-          data-src="https://drive.google.com/file/d/1dNbCzfEY9uymmO_Q8pS87xLm-QZY_ATz/view?usp=drive_link"
-        >
+        <div class="cerita-item" data-type="video" data-title="Sawah Di Belakang Rumah Kakek"
+          data-src="https://drive.google.com/file/d/1dNbCzfEY9uymmO_Q8pS87xLm-QZY_ATz/view?usp=drive_link">
           <div class="cerita-cover">
             <img src="img/cerita.jpg" alt="Video Sawah Kakek" />
           </div>
@@ -48,17 +48,9 @@
           <div class="full-content" style="display: none"></div>
         </div>
 
-        <!-- ==== CERITA TEKS ==== -->
-        <div
-          class="cerita-item"
-          data-type="text"
-          data-title="Langit Setelah Hujan"
-        >
+        <div class="cerita-item" data-type="text" data-title="Langit Setelah Hujan">
           <div class="cerita-cover">
-            <img
-              src="https://placehold.co/400x400/17a2b8/FFFFFF?text=Cerita"
-              alt="Langit Setelah Hujan"
-            />
+            <img src="https://placehold.co/400x400/17a2b8/FFFFFF?text=Cerita" alt="Langit Setelah Hujan" />
           </div>
           <div class="cerita-info">
             <h3>Langit Setelah Hujan</h3>
@@ -74,16 +66,9 @@
           </div>
         </div>
 
-        <div
-          class="cerita-item"
-          data-type="text"
-          data-title="Doni Belajar Tepat Waktu"
-        >
+        <div class="cerita-item" data-type="text" data-title="Doni Belajar Tepat Waktu">
           <div class="cerita-cover">
-            <img
-              src="https://placehold.co/400x400/ffc107/FFFFFF?text=Inspiratif"
-              alt="Doni Belajar Tepat Waktu"
-            />
+            <img src="https://placehold.co/400x400/ffc107/FFFFFF?text=Inspiratif" alt="Doni Belajar Tepat Waktu" />
           </div>
           <div class="cerita-info">
             <h3>Doni Belajar Tepat Waktu</h3>
@@ -98,19 +83,23 @@
           </div>
         </div>
       </div>
-    </main>
-
-    <footer>
-      <p>&copy; kupukupubirujuara@gmail.com</p>
-    </footer>
-
-    <div id="cerita-modal" class="modal">
-      <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <div class="modal-body" id="modal-body-content"></div>
-      </div>
     </div>
 
-    <script src="assets/script.js"></script>
-  </body>
+    <aside class="side-frame"><img src="img/long_ver.png" alt=""></aside>
+  </main>
+
+  <footer>
+    <p>&copy; kupukupubirujuara@gmail.com</p>
+  </footer>
+
+  <div id="cerita-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <div class="modal-body" id="modal-body-content"></div>
+    </div>
+  </div>
+
+  <script src="assets/script.js"></script>
+</body>
+
 </html>

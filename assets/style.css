@@ -99,25 +99,26 @@ nav {
 
 .nav-button {
   padding: 8px 15px;
-  border: none;
-  border-radius: 4px;
+  border: 1px solid transparent;
+  border-radius: 8px;
   background-color: transparent;
   cursor: pointer;
   text-align: center;
   flex-grow: 0;
   margin: 0 5px;
   text-decoration: none;
-  color: #333;
-  transition: all 0.2s;
-  font-weight: 500;
+  color: #343a40;
+  transition: all 0.3s ease;
+  font-weight: 600;
 }
 
 .nav-button.active,
 .nav-button:hover {
-  background-color: transparent;
+  background-color: #e9ecef;
   color: #007bff;
-  border-bottom: 2px solid #007bff;
-  border-color: transparent;
+  border: 1px solid #b3cde3;
+  transform: translateY(-1px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 /* --- KONTEN UTAMA --- */
@@ -148,28 +149,64 @@ footer {
 /* 4. KOMPONEN UMUM (REUSABLE)               */
 /* =========================================== */
 
-/* Menambahkan transisi agar efek hover lebih mulus */
-.page-section .btn {
-  transition: background-color 0.3s ease, border-color 0.3s ease,
-    color 0.3s ease;
+/* ===========================================
+  --- GAYA TOMBOL TERPADU (SESUAI PERMINTAAN) --- 
+  ===========================================
+  Semua kelas tombol (.btn, .primary-btn, .secondary-btn, .explore-button, .game-button)
+  sekarang diatur oleh satu aturan ini untuk konsistensi.
+*/
+.btn,
+.primary-btn,
+.secondary-btn,
+.explore-button,
+.game-button,
+.page-section .grid-3-cols .btn,
+.read-emodule-btn {
+  display: inline-block; /* Memastikan <a> dan <button> tampil sama */
+  padding: 12px 25px;
+  font-size: 1em;
+  cursor: pointer;
+  border: 2px solid #343a40;
+  background-color: white;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  color: #343a40;
+  border-radius: 8px; /* Konsistensi radius */
+  box-sizing: border-box; /* Konsistensi padding */
+  text-align: center;
+  width: auto; /* Mengganti 'width: 100%' dari .primary-btn */
+  margin-top: 10px; /* Margin standar */
+  margin-bottom: 10px;
 }
 
-/* Menerapkan efek hover biru muda */
-.page-section .btn:hover {
-  background-color: #e6f7ff; /* Warna latar biru muda */
-  border-color: #b3e5fc; /* Warna batas/border biru muda */
-  color: #0056b3; /* Warna teks biru tua (agar tetap terbaca) */
+.btn:hover,
+.primary-btn:hover,
+.secondary-btn:hover,
+.explore-button:hover,
+.game-button:hover,
+.page-section .grid-3-cols .btn:hover,
+.read-emodule-btn:hover {
+  background-color: #343a40;
+  color: white;
 }
+
+/* --- ATURAN TOMBOL YANG LAMA DIHAPUS ---
+  .page-section .btn:hover { ... } -> DIHAPUS
+  .primary-btn { ... } -> DIHAPUS
+  .primary-btn:hover { ... } -> DIHAPUS
+  .secondary-btn { ... } -> DIHAPUS
+  .secondary-btn:hover { ... } -> DIHAPUS
+*/
 
 .section-title,
 .section-heading {
   text-align: center;
   font-size: 2em;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 20px; /* Dulu 30px, sekarang 20px */
 }
 
-/* FIX: Definisi .card pertama dihapus, ini adalah definisi .card utama */
 .card {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -195,45 +232,6 @@ footer {
   background-color: #f9f9f9;
   color: #888;
   text-align: center;
-}
-
-.btn {
-  padding: 12px 20px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
-  cursor: pointer;
-  font-size: 1em;
-  text-align: center;
-  text-decoration: none;
-  color: #333;
-}
-
-.primary-btn {
-  background-color: #6a5acd; /* Ungu */
-  color: white;
-  border: none;
-  width: 100%;
-  padding: 14px; /* Padding lebih besar */
-  cursor: pointer;
-  transition: background-color 0.3s;
-  border-radius: 8px;
-  font-weight: 600;
-}
-
-.primary-btn:hover {
-  background-color: #5345a9;
-}
-
-/* Tombol sekunder (untuk ringkasan) */
-.secondary-btn {
-  background-color: #6c757d;
-  color: white;
-  border: none;
-  transition: background-color 0.3s;
-}
-.secondary-btn:hover {
-  background-color: #5a6268;
 }
 
 .input-field {
@@ -377,21 +375,13 @@ textarea.input-field {
   max-width: 500px;
   color: #495057;
 }
-.explore-button {
+
+/* .explore-button { ... } -> DIHAPUS
+  Gaya visualnya sudah dipindahkan ke aturan terpadu di Bagian 4.
+  Sekarang kita hanya perlu menyimpan gaya layout (margin) khusus untuk tombol ini.
+*/
+.center-area .explore-button {
   margin-top: 30px;
-  padding: 12px 25px;
-  font-size: 1em;
-  cursor: pointer;
-  border: 2px solid #343a40;
-  background-color: white;
-  font-weight: bold;
-  transition: all 0.2s ease-in-out;
-  text-decoration: none;
-  color: #343a40;
-}
-.explore-button:hover {
-  background-color: #343a40;
-  color: white;
 }
 
 /* --- Halaman Home --- */
@@ -414,6 +404,7 @@ textarea.input-field {
 }
 
 /* --- Carousel --- */
+/* ... (Gaya Carousel tetap sama) ... */
 .pic-ctn {
   width: 100%;
   height: 300px;
@@ -475,6 +466,7 @@ textarea.input-field {
 .carousel-card:nth-child(5) {
   animation-delay: 8s;
 }
+
 
 /* --- Halaman Cerita --- */
 .header-top {
@@ -619,6 +611,8 @@ textarea.input-field {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto; 
 }
 .ppt-placeholder {
   width: 100%;
@@ -638,14 +632,12 @@ textarea.input-field {
   width: 100%;
   justify-content: center;
 }
-.game-button {
-  padding: 15px 30px;
-  font-size: 1.2em;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: white;
-  cursor: pointer;
-}
+/* .game-button { ... } -> DIHAPUS
+  .game-button:hover { ... } -> DIHAPUS
+  Sudah termasuk dalam aturan terpadu di Bagian 4.
+  Di HTML games.html, kelas .explore-button digunakan, yang juga diatur oleh aturan terpadu.
+*/
+
 
 /* --- Halaman Pembelajaran (Template) --- */
 .page-section {
@@ -661,6 +653,120 @@ textarea.input-field {
   font-weight: 600;
   margin-top: 25px;
   margin-bottom: 15px;
+}
+
+/* .page-section .grid-3-cols .btn { ... } -> DIHAPUS
+  .page-section .grid-3-cols .btn:hover { ... } -> DIHAPUS
+  Sudah termasuk dalam aturan terpadu di Bagian 4.
+*/
+
+
+/* --- Gaya Form dan Input Umum --- */
+/* Definisi .input-field duplikat, dipindahkan ke atas */
+.input-field:focus {
+    border-color: #6a5acd;
+    outline: none;
+    box-shadow: 0 0 5px rgba(106, 90, 205, 0.2);
+}
+label.sub-heading {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+/* Tombol .primary-btn dan .secondary-btn duplikat -> DIHAPUS */
+
+
+/* --- Bagian Quiz/Group Select Layout --- */
+.group-select-container,
+.quiz-input-group {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+.group-info-display {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 6px;
+    color: #856404;
+}
+
+/* --- Video Wrapper (Ganti style inline) --- */
+.video-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    background: #000;
+}
+.video-wrapper iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    display: block;
+    border: none;
+}
+
+/* --- Card dan Grid Layout Tambahan --- */
+.card-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.page-section {
+    padding: 20px 0;
+    margin-bottom: 40px;
+    border-top: 1px solid #eee; /* Pembatas antar section */
+}
+.page-section:first-child {
+    border-top: none;
+}
+.section-heading {
+    /* Menggunakan kembali section-title agar konsisten */
+    margin-bottom: 20px;
+}
+.sub-heading {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+/* Grid layout dasar (sudah ada, hanya dikonfirmasi) */
+.grid {
+    display: grid;
+    gap: 20px;
+}
+.grid-2-cols {
+    grid-template-columns: 1fr 1fr;
+}
+.grid-3-cols {
+    grid-template-columns: repeat(3, 1fr);
+}
+.grid-4-cols {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .grid-2-cols,
+    .grid-3-cols,
+    .grid-4-cols {
+        grid-template-columns: 1fr; /* Stack columns on small screens */
+    }
+    .page-section .grid-3-cols .btn {
+        font-size: 1em;
+        padding: 12px 10px;
+    }
+    .group-select-container,
+    .quiz-input-group {
+        padding: 15px;
+    }
 }
 
 /* =========================================== */
@@ -738,28 +844,12 @@ textarea.input-field {
   display: block;
   object-fit: cover;
 }
-.read-emodule-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  background-color: #007bff;
-  color: white;
-  font-weight: 600;
-  font-size: 1.1em;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color 0.3s, transform 0.2s;
-  width: 100%;
-  max-width: 350px;
-  box-sizing: border-box;
-}
-.read-emodule-btn:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
-}
+/*
+  .read-emodule-btn { ... } -> DIHAPUS
+  .read-emodule-btn:hover { ... } -> DIHAPUS
+  Sudah termasuk dalam aturan terpadu di Bagian 4.
+*/
+
 
 /* --- Komponen Uji Kemampuan (Quiz) --- */
 .quiz-input-group {
@@ -794,39 +884,25 @@ textarea.input-field {
   height: 18px;
 }
 
-/* --- Komponen Eksplorasi (Matching Game) --- */
-
-/* FIX: Menggabungkan dua aturan .matching-container menjadi satu.
-   Menggunakan 'display: flex' (dari aturan kedua)
-   dan 'gap: 20px' (dari aturan kedua) karena menimpa aturan pertama.
-*/
+/* --- Komponen EksplorASI (Matching Game) --- */
 .matching-container {
-  /* Layout dari aturan kedua (yang menimpa) */
   display: flex;
   justify-content: space-around;
   gap: 20px;
   flex-wrap: wrap;
-
-  /* Gaya dari aturan pertama */
   margin-top: 20px;
   padding: 15px;
   border: 1px solid #eee;
   border-radius: 8px;
 }
-
-/* FIX: Menggabungkan dua aturan .matching-source-column/target-column */
 .matching-source-column,
 .matching-target-column {
-  /* Dari aturan pertama */
   display: flex;
   flex-direction: column;
   gap: 15px;
-  /* Dari aturan kedua */
   flex: 1;
   min-width: 280px;
 }
-
-/* Gaya untuk Drag-and-Drop (jika ada) */
 .drag-item,
 .drop-target {
   min-height: 50px;
@@ -844,18 +920,7 @@ textarea.input-field {
   background-color: #fff;
   border-style: dashed;
 }
-
-/* Gaya untuk Matching Dropdown */
 .matching-container.dropdown-matching {
-  /* Gaya Grid 2 Kolom untuk kontainer pencocokan */
-  /* Catatan: Ini ditimpa oleh .matching-container (flex) di atas.
-     Jika Anda ingin *hanya* dropdown-matching yang grid,
-     Anda harus membuatnya lebih spesifik.
-     Tapi berdasarkan kode asli, .matching-container (flex) akan menang.
-     Saya biarkan ini jika Anda ingin mengaktifkannya nanti.
-  */
-  /* display: grid; */
-  /* grid-template-columns: 1fr 1fr; */
   gap: 30px;
   margin-top: 20px;
   padding: 15px 0;
@@ -871,8 +936,6 @@ textarea.input-field {
   width: 100%;
   padding: 8px;
 }
-
-/* Gaya spesifik untuk .input-field di dalam matching game */
 .input-field.matching-select {
   width: 100%;
   padding: 8px;
@@ -930,8 +993,19 @@ textarea.input-field {
 /* --- Mobile (dibawah 768px) --- */
 @media (max-width: 768px) {
   .grid-4-cols {
-    /* Di layar kecil, ubah menjadi 2 kolom */
     grid-template-columns: repeat(2, 1fr);
+  }
+  .games-section iframe {
+    width: 100%;
+    height: 300px;
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  .game-buttons {
+      flex-direction: column;
+  }
+  .game-button {
+      max-width: 100%;
   }
 }
 
@@ -971,11 +1045,15 @@ textarea.input-field {
     grid-template-columns: repeat(3, 1fr);
     max-width: 1200px;
     margin: auto;
-    gap: 30px; /* Jarak antar kartu video */
+    gap: 30px;
   }
 
   .game-buttons {
     width: auto;
+    flex-direction: row; /* Pastikan kembali ke baris di tablet */
+  }
+  .game-button {
+      max-width: 250px; /* Batasi lebar lagi di tablet */
   }
   .page-section {
     padding: 50px 40px;
@@ -1001,13 +1079,22 @@ textarea.input-field {
     justify-content: center;
     padding-top: 20px;
     writing-mode: vertical-rl;
-    transform: rotate(180deg);
+    transform: none;
     text-align: center;
     font-size: 1em;
     color: #adb5bd;
     font-weight: 500;
     letter-spacing: 1px;
   }
+
+  .side-frame img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+    transform: none; 
+    align-self: center;
+  }
+
   .center-area {
     padding: 40px;
   }
@@ -1017,13 +1104,31 @@ textarea.input-field {
   .center-area .short-description {
     font-size: 1.5em;
   }
-  .explore-button {
-    margin-top: 40px;
+
+  /* Penyesuaian ukuran tombol terpadu di desktop */
+  .btn,
+  .primary-btn,
+  .secondary-btn,
+  .explore-button,
+  .game-button,
+  .page-section .grid-3-cols .btn,
+  .read-emodule-btn {
     padding: 15px 35px;
     font-size: 1.2em;
   }
-
-  /* --- Penyesuaian Halaman Games --- */
+  /* Aturan margin khusus desktop untuk .explore-button di dashboard */
+  .center-area .explore-button {
+    margin-top: 40px;
+  }
+  
+  .games-section iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border: none;
+    border-radius: 8px;
+    background: #eee;
+  }
   .ppt-embed {
     width: 100%;
     max-width: 800px;
@@ -1032,15 +1137,10 @@ textarea.input-field {
     border-radius: 8px;
     background: #eee;
   }
-
-  .game-button {
-    text-decoration: none;
-    color: #333;
-  }
-
-  .game-button:hover {
-    background-color: #f0f0f0;
-  }
+  /* .game-button { ... } -> DIHAPUS
+    .game-button:hover { ... } -> DIHAPUS
+    Sudah diatur oleh aturan terpadu.
+  */
 }
 
 /* =========================================== */
@@ -1064,25 +1164,24 @@ textarea.input-field {
   transform: scale(0.95);
   opacity: 0;
   display: none; /* Kunci untuk menyembunyikan */
-  /* Kita gunakan position: absolute agar kartu yang hilang tidak memakan ruang */
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%; /* Pastikan lebarnya sama */
+  width: 100%;
 }
 
-/* Penyesuaian untuk kartu kuis yang aktif agar mengambil ruang */
 .quiz-card.active {
   position: relative; /* Kembalikan ke flow normal */
 }
 
-/* Gaya untuk tombol navigasi kuis */
+/* Gaya untuk tombol navigasi kuis (INI FUNGSIONAL, JADI TETAP ADA) */
 .quiz-navigation .btn {
   width: auto; /* Override .primary-btn width: 100% */
   padding: 10px 20px;
+  font-size: 1em; /* Override ukuran desktop */
 }
 
-/* Gaya untuk tombol disabled */
+/* Gaya untuk tombol disabled (INI FUNGSIONAL, JADI TETAP ADA) */
 .quiz-navigation .btn:disabled,
 .quiz-navigation button[disabled] {
   background-color: #e0e0e0;
