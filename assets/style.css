@@ -107,7 +107,7 @@ nav {
   flex-grow: 0;
   margin: 0 5px;
   text-decoration: none;
-  color: #343a40;
+  color: #31c7ff;
   transition: all 0.3s ease;
   font-weight: 600;
 }
@@ -115,10 +115,10 @@ nav {
 .nav-button.active,
 .nav-button:hover {
   background-color: #e9ecef;
-  color: #007bff;
-  border: 1px solid #b3cde3;
+  color: #31c7ff;
+  border: 1px solid #31c7ff;
   transform: translateY(-1px);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px #31c7ff;
 }
 
 /* --- KONTEN UTAMA --- */
@@ -166,12 +166,12 @@ footer {
   padding: 12px 25px;
   font-size: 1em;
   cursor: pointer;
-  border: 2px solid #343a40;
+  border: 2px solid #31c7ff;
   background-color: white;
   font-weight: bold;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
-  color: #343a40;
+  color: #31c7ff;
   border-radius: 8px; /* Konsistensi radius */
   box-sizing: border-box; /* Konsistensi padding */
   text-align: center;
@@ -187,7 +187,7 @@ footer {
 .game-button:hover,
 .page-section .grid-3-cols .btn:hover,
 .read-emodule-btn:hover {
-  background-color: #343a40;
+  background-color: #31c7ff;
   color: white;
 }
 
@@ -235,7 +235,7 @@ footer {
 }
 
 .input-field {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -351,6 +351,15 @@ textarea.input-field {
   display: flex;
   flex-grow: 1;
   padding: 0;
+  background-color: white;
+}
+.dashboard-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  /* max-width: 1000px; */
+  margin: 0 auto; 
 }
 .side-frame {
   display: none;
@@ -360,7 +369,7 @@ textarea.input-field {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
   text-align: center;
   padding: 20px;
 }
@@ -910,7 +919,7 @@ label.sub-heading {
   flex-wrap: wrap;
   margin-top: 20px;
   padding: 15px;
-  border: 1px solid #eee;
+  /* border: 1px solid #eee; */
   border-radius: 8px;
 }
 .matching-source-column,
@@ -949,6 +958,7 @@ label.sub-heading {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  height: 200px;
 }
 .matching-select {
   width: 100%;
@@ -1015,7 +1025,7 @@ label.sub-heading {
   }
   .games-section iframe {
     width: 100%;
-    height: 300px;
+    height: 800px;
     max-width: 100%;
     border-radius: 8px;
   }
@@ -1101,6 +1111,7 @@ label.sub-heading {
     text-align: center;
     font-size: 1em;
     color: #adb5bd;
+    background-color: white;
     font-weight: 500;
     letter-spacing: 1px;
     overflow: hidden; /* <-- TAMBAHKAN BARIS INI */
