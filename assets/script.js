@@ -235,18 +235,52 @@ function checkRingkasan(buttonElement) {
   buttonElement.textContent = "Telah Tersimpan";
 }
 
+function checkSolusi(buttonElement) {
+  // 1. Dapatkan elemen textarea
+  const textarea = document.getElementById("solusi-ringkasan");
+  if (!textarea) return;
+
+  // 2. Dapatkan teks di dalamnya (dihilangkan spasi di awal/akhir)
+  const ringkasanText = textarea.value.trim();
+
+  // 3. Validasi: Cek apakah textarea kosong
+  if (ringkasanText === "") {
+    alert("Harap tuliskan ringkasan Ananda terlebih dahulu.");
+    return; // Hentikan fungsi jika kosong
+  }
+
+  // 4. Jika berhasil (sesuai permintaan Anda):
+
+  // - Terapkan border hijau
+  textarea.style.borderColor = "green";
+  textarea.style.borderWidth = "2px";
+
+  // - Buat textarea tidak bisa diedit lagi
+  textarea.readOnly = true;
+
+  // 5. (Tambahan Opsional) Nonaktifkan tombolnya
+  buttonElement.disabled = true;
+  buttonElement.textContent = "Telah Tersimpan";
+}
+
 // Fungsi untuk memeriksa jawaban Asal Provinsi (Simulasi Teks Bebas)
 function checkProvinsiAnswers() {
   // ASUMSI KUNCI JAWABAN (Harap sesuaikan dengan gambar Baju Adat yang sebenarnya)
   const kunciProvinsi = {
-    "provinsi-1": "Aceh",
-    "provinsi-2": "Jawa Barat",
-    "provinsi-3": "Bali",
-    "provinsi-4": "Papua",
+    "provinsi-1": "Sumatera Barat",
+    "provinsi-2": "Riau",
+    "provinsi-3": "Jawa Timur",
+    "provinsi-4": "Jawa Tengah",
+    "provinsi-5": "Sulawesi Selatan",
+    "provinsi-6": "Kalimantan Barat",
   };
 
   let correctCount = 0;
   const totalQuestions = Object.keys(kunciProvinsi).length;
+
+  // --- MODIFIKASI 1: Temukan elemen hasil di awal ---
+  // Kita asumsikan ada elemen <h3 id="hasil-skor"> di HTML Anda
+  const elemenHasil = document.getElementById("hasil-skor");
 
   for (let i = 1; i <= totalQuestions; i++) {
     const inputId = `provinsi-${i}`;
@@ -255,6 +289,8 @@ function checkProvinsiAnswers() {
 
     const jawabanSiswa = inputElement.value.trim().toLowerCase();
     const jawabanBenar = kunciProvinsi[inputId].toLowerCase();
+
+    // Anda menggunakan .card, ini bagus!
     const parentCard = inputElement.closest(".card");
 
     // Menghapus kelas feedback sebelumnya
@@ -265,13 +301,27 @@ function checkProvinsiAnswers() {
       correctCount++;
       parentCard.classList.add("jawaban-benar");
     } else if (jawabanSiswa.length > 0) {
+      // Hanya tandai salah jika diisi
       parentCard.classList.add("jawaban-salah");
     }
   }
 
-  alert(
-    `kamu berhasil menjawab ${correctCount} dari ${totalQuestions} provinsi dengan tepat!`
-  );
+  // --- MODIFIKASI 2: Hapus alert dan tampilkan di HTML ---
+  // alert(
+  //  `kamu berhasil menjawab ${correctCount} dari ${totalQuestions} provinsi dengan tepat!`
+  // );
+
+  // Tampilkan skor di elemen #hasil-skor
+  if (elemenHasil) {
+    elemenHasil.innerHTML = `Kamu berhasil menjawab <strong>${correctCount}</strong> dari <strong>${totalQuestions}</strong> provinsi dengan tepat!`;
+    elemenHasil.style.display = "block"; // Tampilkan elemennya
+  } else {
+    // Cadangan jika elemen #hasil-skor tidak ditemukan
+    console.error("Elemen #hasil-skor tidak ditemukan!");
+    alert(
+      `Kamu berhasil menjawab ${correctCount} dari ${totalQuestions} provinsi dengan tepat!`
+    );
+  }
 }
 
 function checkMatchingAnswers() {

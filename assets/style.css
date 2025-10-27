@@ -26,7 +26,8 @@ html {
 
 .grid {
   display: grid;
-  gap: 15px;
+  gap: 1.5rem; /* Jarak antar kartu */
+  padding: 1rem; /* Jarak dari tepi layar */
 }
 .grid-2-cols {
   grid-template-columns: 1fr;
@@ -34,10 +35,12 @@ html {
 .grid-3-cols {
   grid-template-columns: 1fr;
 }
-.grid-4-cols {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+grid-4-cols {
+  /* auto-fit: Buat kolom sebanyak mungkin yang muat.
+    minmax(220px, 1fr): Setiap kolom minimal 220px, 
+    dan jika ada sisa ruang, bagi rata (1fr).
+  */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 /* =========================================== */
@@ -208,18 +211,56 @@ footer {
 }
 
 .card {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 10px;
+  border: 1px solid #e5e7eb; /* Garis tepi tipis */
+  border-radius: 12px; /* Sudut melengkung */
   background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease-in-out; /* Animasi transisi untuk feedback */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Bayangan halus */
+  overflow: hidden; /* Penting agar isinya tidak keluar dari sudut */
+  transition: transform 0.2s;
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px); /* Efek terangkat sedikit saat di-hover */
+}
+
+/* --- Styling Placeholder (Kotak Gambar) --- */
+.placeholder-box {
+  /* Kita ambil tinggi 120px dari inline style Anda */
+  height: 120px;
+
+  /* Styling agar mirip screenshot (kotak putus-putus) */
+  margin: 1rem; /* Jarak dari tepi kartu */
+  border: 2px dashed #d1d5db; /* Garis putus-putus abu-abu */
+  border-radius: 8px;
+  background-color: #f9fafb; /* Latar belakang sedikit abu-abu */
+
+  /* Menengahkan teks "Baju Adat 1" */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280; /* Warna teks abu-abu */
+  font-weight: 500;
+}
+
+/* --- Styling Input Field --- */
+.input-field.provinsi-input {
+  width: calc(
+    100% - 2rem
+  ); /* Lebar penuh dikurangi margin (1rem kiri + 1rem kanan) */
+  margin: 0 1rem 1rem 1rem; /* Jarak atas 0, sisanya 1rem */
+
+  padding: 12px 14px;
+  border: 1px solid #d1d5db; /* Garis tepi input */
+  border-radius: 6px;
+
+  font-size: 1rem;
+  box-sizing: border-box; /* Penting agar padding tidak merusak lebar */
+}
+
+.input-field.provinsi-input:focus {
+  outline: none;
+  border-color: #3b82f6; /* Ganti warna border saat diklik */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
 }
 
 .placeholder-box {
@@ -272,6 +313,52 @@ textarea.input-field {
   cursor: pointer;
 }
 
+.cerita-description {
+  margin-bottom: 2em;
+}
+
+.video-description {
+  margin-bottom: 2em;
+}
+
+.game-description {
+  margin-bottom: 2em;
+}
+
+.next-bentuktim {
+  margin-top: 3em;
+  text-align: left;
+}
+
+.title-bentuktim {
+  text-align: center;
+}
+
+/* Styling untuk galeri MTC Flashcard */
+.mtc-gallery {
+  display: flex; /* Membuat gambar berjajar horizontal */
+  flex-wrap: wrap; /* Memindahkan gambar ke bawah jika layar sempit */
+  justify-content: center; /* Menengahkan gambar-gambar */
+  gap: 1.5rem; /* Memberi jarak antar gambar */
+
+  /* Memberi jarak dari teks di atas dan tombol di bawah */
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Styling untuk setiap gambar di dalam galeri */
+.mtc-gallery img {
+  /* Batasi lebar gambar agar tidak terlalu besar di layar lebar */
+  max-width: 250px;
+
+  /* Membuat gambar responsif */
+  width: 100%;
+  height: auto; /* Menjaga rasio aspek gambar */
+
+  /* Estetika */
+  border-radius: 10px; /* Sudut sedikit melengkung */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+}
 /* --- Modal --- */
 .modal {
   display: none;
@@ -359,7 +446,7 @@ textarea.input-field {
   align-items: center;
   gap: 20px;
   /* max-width: 1000px; */
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 .side-frame {
   display: none;
@@ -476,7 +563,6 @@ textarea.input-field {
   animation-delay: 8s;
 }
 
-
 /* --- Halaman Cerita --- */
 .header-top {
   display: flex;
@@ -503,7 +589,7 @@ textarea.input-field {
   align-items: center;
   gap: 20px;
   /* max-width: 1000px; */
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 .cerita-list {
   display: flex;
@@ -563,7 +649,7 @@ textarea.input-field {
   align-items: center;
   gap: 20px;
   /* max-width: 1000px; */
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .video-grid {
@@ -639,7 +725,7 @@ textarea.input-field {
   align-items: center;
   gap: 20px;
   max-width: 1000px;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 .ppt-placeholder {
   width: 100%;
@@ -653,18 +739,65 @@ textarea.input-field {
   font-size: 2em;
   border-radius: 8px;
 }
+/* 1. Container Utama (yang menampung kedua kartu) */
 .game-buttons {
-  display: flex;
-  gap: 15px;
-  width: 100%;
-  justify-content: center;
+  margin-top: 2em;
+  display: flex; /* Menyusun kartu secara horizontal */
+  justify-content: center; /* Menengahkan kartu-kartu */
+  flex-wrap: wrap; /* Memindahkan kartu ke bawah jika layar sempit */
+  gap: 2rem; /* Jarak antar kartu */
+  padding: 1rem;
 }
-/* .game-button { ... } -> DIHAPUS
-  .game-button:hover { ... } -> DIHAPUS
-  Sudah termasuk dalam aturan terpadu di Bagian 4.
-  Di HTML games.html, kelas .explore-button digunakan, yang juga diatur oleh aturan terpadu.
-*/
 
+/* 2. Styling untuk setiap Kartu (pembungkus gambar + tombol) */
+.game-card {
+  display: flex;
+  flex-direction: column; /* Menumpuk gambar dan tombol secara vertikal */
+  align-items: center; /* Menengahkan isinya (gambar & tombol) */
+  width: 300px; /* Atur lebar kartu sesuai kebutuhan */
+
+  /* Efek bayangan & batas agar terlihat seperti kartu */
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden; /* Memastikan gambar tidak keluar dari radius batas */
+  background-color: #ffffff;
+}
+
+/* 3. Styling untuk Gambar Cuplikan */
+.game-preview-img {
+  width: 100%; /* Gambar akan memenuhi lebar kartu */
+  height: 180px; /* Atur tinggi gambar (sesuaikan) */
+  object-fit: cover; /* Memastikan gambar menutupi area tanpa distorsi */
+}
+
+/* 4. Styling untuk Tombol (Saya sesuaikan agar mirip gambar Anda) */
+.explore-button {
+  /* Beri jarak dari gambar di atasnya */
+  margin-top: 1rem;
+  /* Beri jarak di bagian bawah kartu */
+  margin-bottom: 1.5rem;
+
+  display: inline-block;
+  padding: 10px 24px;
+  border: 2px solid #00aaff;
+  border-radius: 25px; /* Membuat sudut sangat bulat */
+
+  color: #00aaff;
+  background-color: #ffffff;
+
+  text-decoration: none;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+
+  transition: all 0.3s ease; /* Efek hover yang halus */
+}
+
+/* Efek Hover untuk Tombol */
+.explore-button:hover {
+  background-color: #00aaff;
+  color: #ffffff;
+}
 
 /* --- Halaman Pembelajaran (Template) --- */
 .page-section {
@@ -687,113 +820,159 @@ textarea.input-field {
   Sudah termasuk dalam aturan terpadu di Bagian 4.
 */
 
-
 /* --- Gaya Form dan Input Umum --- */
 /* Definisi .input-field duplikat, dipindahkan ke atas */
 .input-field:focus {
-    border-color: #6a5acd;
-    outline: none;
-    box-shadow: 0 0 5px rgba(106, 90, 205, 0.2);
+  border-color: #6a5acd;
+  outline: none;
+  box-shadow: 0 0 5px rgba(106, 90, 205, 0.2);
 }
 label.sub-heading {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: #333;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333;
 }
-/* Tombol .primary-btn dan .secondary-btn duplikat -> DIHAPUS */
 
+/* Styling untuk gambar kuis di dalam kartu */
+.quiz-image {
+  width: 100%;
+  height: 180px; /* Pertahankan tinggi yang seragam */
+
+  /* --- Perubahan Kunci di Sini --- */
+  object-fit: contain; /* Ini akan menampilkan seluruh gambar */
+  background-color: #f9fafb; /* Tambahkan warna latar belakang yang netral */
+
+  /* Optional: Tambahkan padding di dalam kartu agar gambar tidak terlalu mepet */
+  padding: 1rem;
+  box-sizing: border-box; /* Agar padding tidak menambah lebar/tinggi gambar */
+}
+
+/* Anda bisa HAPUS styling .placeholder-box yang lama 
+  (yang memiliki 'border: 2px dashed ...') 
+  karena sudah tidak dipakai lagi.
+*/
+/* Tombol .primary-btn dan .secondary-btn duplikat -> DIHAPUS */
 
 /* --- Bagian Quiz/Group Select Layout --- */
 .group-select-container,
 .quiz-input-group {
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    background: #f8f9fa;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background: #f8f9fa;
 }
 .group-info-display {
-    text-align: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    background: #fff3cd;
-    border: 1px solid #ffeeba;
-    border-radius: 6px;
-    color: #856404;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 6px;
+  color: #856404;
 }
 
 /* --- Video Wrapper (Ganti style inline) --- */
 .video-wrapper {
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  background: #000;
 }
 .video-wrapper iframe {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    height: auto;
-    display: block;
-    border: none;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  display: block;
+  border: none;
+}
+
+/* Styling untuk kontrol kuis */
+.quiz-controls {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Styling untuk elemen hasil (pastikan ini ada) */
+#hasil-skor {
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+  display: none; /* Awalnya disembunyikan */
+}
+
+/* --- Styling Umpan Balik Input --- */
+
+/* Styling untuk Kartu BENAR */
+.card.jawaban-benar {
+  border: 2px solid #28a745; /* Hijau */
+  box-shadow: 0 0 8px rgba(40, 167, 69, 0.4);
+}
+
+/* Styling untuk Kartu SALAH */
+.card.jawaban-salah {
+  border: 2px solid #dc3545; /* Merah */
+  box-shadow: 0 0 8px rgba(220, 53, 69, 0.4);
 }
 
 /* --- Card dan Grid Layout Tambahan --- */
 .card-content {
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .page-section {
-    padding: 20px 0;
-    margin-bottom: 40px;
-    border-top: 1px solid #eee; /* Pembatas antar section */
+  padding: 20px 0;
+  margin-bottom: 40px;
+  border-top: 1px solid #eee; /* Pembatas antar section */
 }
 .page-section:first-child {
-    border-top: none;
+  border-top: none;
 }
 .section-heading {
-    /* Menggunakan kembali section-title agar konsisten */
-    margin-bottom: 20px;
+  /* Menggunakan kembali section-title agar konsisten */
+  margin-bottom: 20px;
 }
 .sub-heading {
-    font-size: 1.2em;
-    font-weight: 700;
-    margin-top: 15px;
-    margin-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 /* Grid layout dasar (sudah ada, hanya dikonfirmasi) */
 .grid {
-    display: grid;
-    gap: 20px;
+  display: grid;
+  gap: 20px;
 }
 .grid-2-cols {
-    grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 .grid-3-cols {
-    grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 .grid-4-cols {
-    grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
-    .grid-2-cols,
-    .grid-3-cols,
-    .grid-4-cols {
-        grid-template-columns: 1fr; /* Stack columns on small screens */
-    }
-    .page-section .grid-3-cols .btn {
-        font-size: 1em;
-        padding: 12px 10px;
-    }
-    .group-select-container,
-    .quiz-input-group {
-        padding: 15px;
-    }
+  .grid-2-cols,
+  .grid-3-cols,
+  .grid-4-cols {
+    grid-template-columns: 1fr; /* Stack columns on small screens */
+  }
+  .page-section .grid-3-cols .btn {
+    font-size: 1em;
+    padding: 12px 10px;
+  }
+  .group-select-container,
+  .quiz-input-group {
+    padding: 15px;
+  }
 }
 
 /* =========================================== */
@@ -876,7 +1055,6 @@ label.sub-heading {
   .read-emodule-btn:hover { ... } -> DIHAPUS
   Sudah termasuk dalam aturan terpadu di Bagian 4.
 */
-
 
 /* --- Komponen Uji Kemampuan (Quiz) --- */
 .quiz-input-group {
@@ -1030,10 +1208,10 @@ label.sub-heading {
     border-radius: 8px;
   }
   .game-buttons {
-      flex-direction: column;
+    flex-direction: column;
   }
   .game-button {
-      max-width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -1081,7 +1259,7 @@ label.sub-heading {
     flex-direction: row; /* Pastikan kembali ke baris di tablet */
   }
   .game-button {
-      max-width: 250px; /* Batasi lebar lagi di tablet */
+    max-width: 250px; /* Batasi lebar lagi di tablet */
   }
   .page-section {
     padding: 50px 40px;
@@ -1121,7 +1299,7 @@ label.sub-heading {
     max-height: 100%;
     width: auto;
     object-fit: contain;
-    transform: none; 
+    transform: none;
     align-self: center;
   }
 
@@ -1150,7 +1328,7 @@ label.sub-heading {
   .center-area .explore-button {
     margin-top: 40px;
   }
-  
+
   .games-section iframe {
     width: 100%;
     max-width: 800px;
